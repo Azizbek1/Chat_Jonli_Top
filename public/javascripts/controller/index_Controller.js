@@ -1,4 +1,4 @@
-app.controller("indexController", ['$scope', 'indexFactory', ($scope, indexFactory) => {     // Eng asosiy qisimlar yoziladi: : Client qismi 
+app.controller("indexController", ['$scope', 'indexFactory','configFactory', ($scope, indexFactory, configFactory) => {     // Eng asosiy qisimlar yoziladi: : Client qismi 
 
 
     $scope.messages = [];
@@ -24,13 +24,17 @@ app.controller("indexController", ['$scope', 'indexFactory', ($scope, indexFacto
         }
     }
 
-    function InitSocket(username){
+  async function InitSocket(username){
         const connectionOptions = {  // object 
             reconnectionAttempts: 3,
             reconnectionDelay: 600
         }
 
-        indexFactory.connectSocket('http://localhost:3000', connectionOptions)
+        const socketUrl = await configFactory.getConfig()
+
+        console.log(socketUrl.data.socketUrl);
+
+        indexFactory.connectSocket(socketUrl.data.socketUrl, connectionOptions)
         .then((socket) => {
             // console.log("Boglanish amalga oshirildi", socket);
 
