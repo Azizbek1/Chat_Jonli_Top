@@ -7,13 +7,16 @@ block content
     .ui.one.column.stackable.center.aligned.page.grid.margin-30
       .column.twelve.wide
         .ui.stacked.segment.gameArea(ng-click="onClickPlayer($event)")
-          .circle.blue(ng-repeat="player in players", 
-                       ng-style="{ 'left': player.position.x, 'top': player.position.y }", 
-                        id="{{ player.id }}")
+          .circle(ng-repeat="player in players", 
+                       ng-style="{ 'left': player.position.x + 'px', 'top': player.position.y + 'px' }", 
+                        id="{{ player.id }}",
+                        class="{{ player.color }}"
+                        )
+                        
             .relative
               span.name {{ player.username }}
               //- .message Salom
-        .ui.items.chat
+        .ui.items.chat#chat-aria
           .item(ng-repeat='message in messages')
             .content(ng-if="!message.type.code") 
               span [SERVER] &nbsp;
@@ -22,7 +25,12 @@ block content
                 | Chatdan Ayrildi
               .description.message(ng-if="message.type.message")
                 | Chatga qo'shildi 
-        .ui.action.input.fluid
-          input(type='text', placeholder='Type here...')
-          button.ui.button Send
+            .content(ng-if="message.type.code") 
+              span [SERVER] &nbsp;
+              a.header.name {{ message.username }} &nbsp;
+              .description.message
+                | {{ message.text }} 
+        form.ui.action.input.fluid(ng-submit="newMessage()")
+          input(ng-model='message', placeholder='Shu yerga Yozishingiz kerak')
+          button.ui.button(type="submit") Jo'nat
 

@@ -44,6 +44,15 @@ body{
 .red {
     background-color: #e74c3c;
 }
+.black {
+    background-color: #252525;
+}
+.orange {
+    background-color: #f89b06;
+}
+.white {
+    background-color: #a5fafa;
+}
 
 .circle .relative{
     position: relative;
@@ -64,13 +73,15 @@ body{
     width: 100%;
     display: inline-block;
 }
-
+#chat-aria{
+    overflow-y: auto;
+}
 .chat{
     margin-right: 10px!important;
     margin-left: 10px!important;
     height: 90px;
-    -webkit-mask-image: -webkit-gradient(linear, left 60%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
-
+    -webkit-mask-image: -webkit-gradient(linear, left 60%, left bottom, from(rgba(0,0,0,1)), to(rgb(0, 0, 0)));
+    overflow-y: auto;
 }
 .chat .content{
     text-align: left;
