@@ -12,5 +12,5 @@ app.factory("configFactory", ['$http', ($http) => {
                 })
         })
     }
-    return getConfig
+    return {getConfig}
 }])

@@ -11,8 +11,6 @@ app.controller("indexController", ['$scope', 'indexFactory','configFactory', ($s
         })
     }
 
-
-
     $scope.init = () => {
         const username = prompt(`Iltimos Ismingizni yozing`); //aziz
 
@@ -23,7 +21,6 @@ app.controller("indexController", ['$scope', 'indexFactory','configFactory', ($s
             return false
         }
     }
-
   async function InitSocket(username){
         const connectionOptions = {  // object 
             reconnectionAttempts: 3,
@@ -43,7 +40,7 @@ app.controller("indexController", ['$scope', 'indexFactory','configFactory', ($s
 
             socket.on("initPlayers", (players) => {
                 $scope.players = players
-                scrollTop()
+                // scrollTop()
                 $scope.$apply();
             })
 
