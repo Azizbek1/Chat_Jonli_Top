@@ -29,7 +29,7 @@ app.controller("indexController", ['$scope', 'indexFactory','configFactory', ($s
 
         const socketUrl = await configFactory.getConfig()
 
-        console.log(socketUrl.data.socketUrl);
+        // console.log(socketUrl.data.socketUrl);
 
         indexFactory.connectSocket(socketUrl.data.socketUrl, connectionOptions)
         .then((socket) => {
